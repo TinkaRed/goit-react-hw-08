@@ -6,11 +6,11 @@ import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 
 const ContactsPage = () => {
-   const dispatch = useDispatch();
+const dispatch = useDispatch();
   useEffect(() =>{
     dispatch(fetchContacts());
   },[dispatch])
-  return (
+return (
     <div>
         <ContactForm/>
       <SearchBox/>

@@ -14,7 +14,6 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-
 const persistConfig = {
   key: 'auth-data',
   version: 1,
@@ -29,13 +28,12 @@ export const store = configureStore({
         filter: filterReducer,
         auth: persistedReducer,
     },
-       middleware: (getDefaultMiddleware) =>
+    middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });
-
 
 export let persistor = persistStore(store)

@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import c from "./Contact.module.css";
 import { deleteContact } from "../../redux/contacts/operations.js";
 
-
 function Contact({ data }) {
   const { name, number } = data; 
   const dispatch = useDispatch();
