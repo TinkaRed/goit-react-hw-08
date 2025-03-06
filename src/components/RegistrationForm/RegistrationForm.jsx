@@ -16,7 +16,6 @@ function RegistrationForm() {
     password: '',
   };
 
-  // Схема валідації
   const validationSchema = Yup.object({
     name: Yup.string()
       .min(3)
