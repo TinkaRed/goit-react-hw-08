@@ -4,14 +4,13 @@ import { api } from "../auth/operations";
 export const fetchContacts = createAsyncThunk('contacts/fetchData', async (_, thunkAPI) => {
     try {
         const { data } = await api.get('/contacts');
-        
         return data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
 });
 
-export const deleteContact =  createAsyncThunk('/contacts/deleteContact', async (id, thunkAPI) => {
+export const deleteContact = createAsyncThunk('contacts/deleteContact', async (id, thunkAPI) => {
     try {
         await api.delete(`/contacts/${id}`);
         return id;
@@ -20,13 +19,20 @@ export const deleteContact =  createAsyncThunk('/contacts/deleteContact', async 
     }
 });
 
-export const addContact = createAsyncThunk('contacts/addContact', async(body,thunkAPI) => { 
-try {
-    const { data } = await api.post(`/contacts`, body);
+export const addContact = createAsyncThunk('contacts/addContact', async (body, thunkAPI) => { 
+    try {
+        const { data } = await api.post(`/contacts`, body);
         return data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
-})
+});
 
-
+export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
+    try {
+        await api.post('/logout');
+        return true;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
